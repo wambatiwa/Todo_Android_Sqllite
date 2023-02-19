@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import database.DbHelper;
+import model.Tache;
 
 public class AddDilog extends AppCompatDialogFragment {
     private EditText edit_title;
@@ -39,17 +40,23 @@ public class AddDilog extends AppCompatDialogFragment {
                         String title = edit_title.getText().toString().trim();
                         int ent = spinnerEnt.getSelectedItemPosition();
                         System.out.println(title + " -- " + ent);
-//                        switch (ent) {
-//                            case 0:
-//                                myDB.addTask(title, 1);
-//                                break;
-//                            case 1:
-//                                myDB.addTask(title, 2);
-//                                break;
-//                            case 2:
-//                                myDB.addTask(title, 3);
-//                                break;
-//                        }
+                        switch (ent) {
+                            case 0:
+                                Tache t0 = new Tache(title,1);
+                                myDB.insertUser(t0);
+                                System.out.println(title + " -- entered in db " + ent);
+                                break;
+                            case 1:
+                                Tache t1 = new Tache(title,2);
+                                myDB.insertUser(t1);
+                                System.out.println(title + " -- entered in db " + ent);
+                                break;
+                            case 2:
+                                Tache t2 = new Tache(title,3);
+                                myDB.insertUser(t2);
+                                System.out.println(title + " -- entered in db " + ent);
+                                break;
+                        }
                     }
                 });
 

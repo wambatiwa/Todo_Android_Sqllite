@@ -20,7 +20,8 @@ import database.DbHelper;
 public class MainActivity extends AppCompatActivity {
     DbHelper myDB ;
     ImageView empty_imageview;
-    TextView no_data;
+    TextView no_data,name;
+
 //    FloatingActionButton add_btn;
 
     @Override
@@ -64,11 +65,14 @@ public class MainActivity extends AppCompatActivity {
             empty_imageview.setVisibility(View.VISIBLE);
             no_data.setVisibility(View.VISIBLE);
         }else{
-//            while (cursor.moveToNext()){
-//                task_id.add(cursor.getString(0));
-//                task_name.add(cursor.getString(1));
-//                task_entreprise.add(cursor.getString(2));
-//            }
+            while (cursor.moveToNext()){
+                name = findViewById(R.id.textName);
+                String title = cursor.getString(1);
+                String id = cursor.getString(0);
+                String cat = cursor.getString(2);
+                //Toast.makeText(this, "le titre est"+title+" l'id est : "+ id + " la categorie est: "+cat, Toast.LENGTH_SHORT).show();
+            }
+            System.out.println("il ya des donneees dans la bd");
             empty_imageview.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);
         }

@@ -47,7 +47,7 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put("title",t1.getTitle());
         cv.put("cat",t1.getCat());
 
-        db.insert("user",null,cv);
+        db.insert(TABLE_NAME,null,cv);
         db.close();
     }
 }
