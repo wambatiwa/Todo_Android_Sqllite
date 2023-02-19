@@ -10,17 +10,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 import database.DbHelper;
+import model.Tache;
 
 public class MainActivity extends AppCompatActivity {
     DbHelper myDB ;
     ImageView empty_imageview;
-    TextView no_data,name;
+    TextView no_data;
+    ListView ls;
+
 
 //    FloatingActionButton add_btn;
 
@@ -60,21 +66,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void storeDataInArrays(){
+        int images[] = {R.color.AKAI,R.color.Meeti,R.color.Circus};
+        int image;
+        ArrayList<Tache> arrayList = new ArrayList<>();
+        ls = findViewById(R.id.list);
         Cursor cursor = myDB.getAllTasks();
         if(cursor.getCount() == 0){
             empty_imageview.setVisibility(View.VISIBLE);
             no_data.setVisibility(View.VISIBLE);
         }else{
             while (cursor.moveToNext()){
-                name = findViewById(R.id.textName);
                 String title = cursor.getString(1);
                 String id = cursor.getString(0);
                 String cat = cursor.getString(2);
+                int categorie = Integer.valueOf(cat);
+                switch (categorie) {
+                    case 1:
+                         image = images[0];
+                        break;
+                    case 2:
+                         image = images[1];
+                        break;
+                    case 3:
+                        image = images[2];
+                        break;
+                    default:
+                        image = R.color.white;
+                }
+                arrayList.add(new Tache(title,image));
                 //Toast.makeText(this, "le titre est"+title+" l'id est : "+ id + " la categorie est: "+cat, Toast.LENGTH_SHORT).show();
             }
-            System.out.println("il ya des donneees dans la bd");
             empty_imageview.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);
+            TaskAdapter adapter = new TaskAdapter(this, R.layout.items,arrayList);
+            ls.setAdapter(adapter);
         }
     }
     public void ajouter(View v) {
