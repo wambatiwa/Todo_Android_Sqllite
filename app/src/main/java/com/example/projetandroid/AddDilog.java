@@ -3,6 +3,7 @@ package com.example.projetandroid;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,6 +58,8 @@ public class AddDilog extends AppCompatDialogFragment {
                                 System.out.println(title + " -- entered in db " + ent);
                                 break;
                         }
+                        Intent in = new Intent(getContext(),MainActivity.class);
+                        startActivity(in);
                     }
                 });
 

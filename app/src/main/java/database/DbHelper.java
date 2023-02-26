@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -49,5 +50,32 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.insert(TABLE_NAME,null,cv);
         db.close();
+    }
+    public void deleteByTitle(String titre) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long result = db.delete(TABLE_NAME, "title=?",new String[] {String.valueOf(titre)});
+        if(result == -1) {
+            System.out.println("echec de la suppresion");
+        } else {
+            System.out.println("suppresion reussie");
+        }
+        db.close();
+    }
+    public Cursor getTask(int cat) {
+        //HashMap<String, String> user = new HashMap<String, String>();
+        String selectQuery = "select * from  " + TABLE_NAME + " where cat =" + "'" + cat + "'";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        Tache user = null;
+//        if (cursor.getCount() == 0) {
+//            return null;
+//        } else {
+            if(db != null){
+                cursor = db.rawQuery(selectQuery, null);
+            }
+        //}
+        return cursor;
     }
 }

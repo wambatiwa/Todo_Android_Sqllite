@@ -6,12 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
     <ListView
         android:id="@+id/list"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_margin="8dp" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
@@ -41,4 +47,12 @@
         android:gravity="center"
         android:text="Tu n'as aucune tâche à traiter"
         android:visibility="gone" />
+    <TextView
+        android:id="@+id/emptyDataCat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emptyDataImage"
+        android:gravity="center"
+        android:text="Aucune Tâche de cette catégorie"
+        android:visibility="gone"/>
 </RelativeLayout>
