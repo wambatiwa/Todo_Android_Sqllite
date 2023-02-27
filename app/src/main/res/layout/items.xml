@@ -14,9 +14,11 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:cardCornerRadius="30dp">
+            android:layout_height="30dp"
+            android:layout_weight="0.7"
+            android:paddingRight="10dp"
+            android:shape="ring"
+            app:cardCornerRadius="25dp">
 
             <ImageView
                 android:id="@+id/image1"
@@ -35,7 +37,7 @@
                 android:id="@+id/textName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="name" />
