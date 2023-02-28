@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -199,6 +200,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void ajouter(View v) {
         AddDilog addActivity = new AddDilog();
-        addActivity.show(getSupportFragmentManager(), "exampledialog");
+        addActivity.show(getSupportFragmentManager(), "ajouter une tache");
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
